@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Clientes</title>
+	<link rel="stylesheet" type="text/css" href="/css/estilo.css">
+</head>
+<body>
+	<div class="margem">
+		<div class="cabecalho">
+			<h1>Cliente</h1>
+		</div>
+		<div class="container">
+			<form th:object="${cliente}" th:action="@{/salvar}" method="post">
+				<input type="hidden" th:field="*{id}"/>
+				<div class="row">
+					<div class="col-25">
+						<label for="nome">Nome</label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="nome" th:field="*{nome}"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-25">
+						<label for="nome">E-mail</label>
+					</div>
+					<div class="col-75">
+						<input type="text" id="email" th:field="*{email}"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-25">
+						<label>Sexo</label>
+					</div>
+					<div class="col-75 boxBackground">										
+						<input type="radio" id="masculino" name="sexo" th:value="M" th:checked="*{sexo} == 'M'"/>
+						<label for="masculino">Masculino</label><br>				
+						<input type="radio" id="feminino"  name="sexo" th:value="F" th:checked="*{sexo} == 'F'"/>						
+						<label for="feminino">Feminino</label><br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-25">
+						<label>Estado civíl</label>
+					</div>
+					<div class="col-75 boxBackground">										
+						<input type="radio" id="casado" name="estadoCivil" th:value="casado" th:checked="*{estadoCivil} == 'casado'"/>
+						<label for="casado">Casado</label><br>				
+						<input type="radio" id="solteiro"  name="estadoCivil" th:value="solteiro" th:checked="*{estadoCivil} == 'solteiro'"/>						
+						<label for="solteiro">Solteiro</label><br>
+						<input type="radio" id="divorciado"  name="estadoCivil" th:value="divorciado" th:checked="*{estadoCivil} == 'divorciado'"/>						
+						<label for="divorciado">Divorciado</label><br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-100">
+						<input type="submit" value="Salvar">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div style="text-align: center;">
+		<a th:href="@{/}">Clientes</a>
+	</div>
+</body>
+</html>
